@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--黑-->
+    <color name="b0">#333333</color>
+    <!--透明-->
+    <color name="transparent">#00000000</color>
+
+    <color name="startText">#5fe0dc</color>
+    <color name="startModelBg">#1b2c38</color>
+
+    <!--白-->
+    <color name="w0">#FFFFFF</color>
+
+    <color name="laser_color">#59f79a</color>
+    <!--文字浅灰-->
+    <color name="g2">#b2b2b2</color>
+    <!--最常用灰-->
+    <color name="g0">#888888</color>
+
+    <color name="red">#ff79d8</color>
+
+    <color name="titleBack">#eeeeee</color>
+
+    <color name="g1">#999999</color>
+
+    <color name="modelPress">#fff1fb</color>
+
+    <color name="buttonStartColor">#ff79db</color>
+
+    <color name="buttonEndColor">#a653fb</color>
+
+</resources>

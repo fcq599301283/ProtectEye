@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/retan_start_model">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/model_divider"
+            android:dividerHeight="2dp"
+            android:layerType="software">
+
+        </ListView>
+    </FrameLayout>
+
+
+</LinearLayout>

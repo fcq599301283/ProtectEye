@@ -31,14 +31,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:src="@mipmap/bt_connected" />
+            android:src="@mipmap/unconnected" />
 
         <TextView
             android:id="@+id/btConnectedStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="已连接"
+            android:text="未连接"
             android:textColor="@color/startText" />
 
     </LinearLayout>

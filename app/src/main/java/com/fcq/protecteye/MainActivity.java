@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,11 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.fcq.protecteye.Utils.BlurUtils;
+import com.fcq.protecteye.Utils.LinkService;
+import com.fcq.protecteye.Utils.MyHandler;
 import com.fcq.protecteye.Utils.OnBlurChangedImp;
 import com.fcq.protecteye.Utils.SPUtils;
+import com.fcq.protecteye.View.RestDialog;
 import com.fcq.protecteye.data.Model;
 import com.fcq.protecteye.service.ProtectService;
 
@@ -29,7 +33,7 @@ import butterknife.OnClick;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyHandler.OnStateChange {
 
 
     @Bind(R.id.personalCenter)
@@ -137,6 +141,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void initDefaultModel() {
+        String modelName = (String) SPUtils.get(this, SPUtils.CURRENT_MODEL, SPUtils.DEFAULT_STRING);
+        if (modelName == null || SPUtils.DEFAULT_STRING.equals(modelName)) {
+            return;
+        }
+        modelText.setText(modelName);
+        Model model = realm.where(Model.class).equalTo("name", modelName).findFirst();
+        if (model != null) {
+            protectService.updateModel(model);
+        }
+    }
+
     private void showPopMenu() {
         popupWindow.showAsDropDown(modelSelectLay, 0, 0);
         modelSelectLay.setBackgroundResource(R.drawable.retan_start_model);
@@ -150,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, PersonalCenterActivity.class));
                 break;
             case R.id.btConnectedLay:
+                startActivity(new Intent(MainActivity.this, BtActivity.class));
                 break;
             case R.id.discoverLay:
                 startActivity(new Intent(MainActivity.this, DiscoverActivity.class));
@@ -160,6 +177,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void showDialog() {
+        RestDialog dialog = new RestDialog(this);
+        dialog.show();
+    }
+
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -167,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
             ProtectService.MyBinder myBinder = (ProtectService.MyBinder) service;
             protectService = myBinder.getMyService();
             isBinded = true;
+            initDefaultModel();
         }
 
         @Override
@@ -174,4 +197,20 @@ public class MainActivity extends AppCompatActivity {
             isBinded = false;
         }
     };
+
+    @Override
+    public void onChange(Message msg) {
+        switch (msg.what) {
+            case LinkService.Connected:
+            case MyHandler.receiveMsg:
+                btConnectedImage.setImageResource(R.mipmap.bt_connected);
+                btConnectedStatus.setText("已连接");
+                break;
+            default:
+                btConnectedImage.setImageResource(R.mipmap.unconnected);
+                btConnectedStatus.setText("未连接");
+                break;
+        }
+    }
+
 }

@@ -1,21 +1,16 @@
 package com.fcq.protecteye;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Application;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
+import com.fcq.protecteye.View.RestDialog;
 import com.fcq.protecteye.data.Model;
 import com.fcq.protecteye.service.ProtectService;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-
-import static com.fcq.protecteye.service.ProtectService.secondPerMinute;
 
 /**
  * Created by FengChaoQun
@@ -116,29 +111,33 @@ public class MyApplication extends Application {
             return;
         }
         try {
-            AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity);
-            View view = View.inflate(currentActivity, R.layout.dialog_protect, null);
-            builder.setView(view);
-            final AlertDialog dialog = builder.create();
-            dialog.show();
-            dialog.setCancelable(false);
+//            AlertDialog.Builder builder = new AlertDialog.Builder(currentActivity);
+//            View view = View.inflate(currentActivity, R.layout.dialog_protect, null);
+//            builder.setView(view);
+//            final AlertDialog dialog = builder.create();
+//            dialog.show();
+//            dialog.setCancelable(false);
+//
+//            TextView contentText = (TextView) view.findViewById(R.id.contentText);
+//            final TextView leftTime = (TextView) view.findViewById(R.id.leftTime);
+//
+//            new CountDownTimer(model.getDivideTime() * secondPerMinute * 1000, 1000) {
+//                @Override
+//                public void onTick(long millisUntilFinished) {
+//                    leftTime.setText("剩余时间:" + millisUntilFinished / 1000 + "秒");
+//                    protectService.refreshNotification("剩余休息时间:" + millisUntilFinished / 1000 + "秒");
+//                }
+//
+//                @Override
+//                public void onFinish() {
+//                    dialog.dismiss();
+//                    protectService.updateModel(model);
+//                }
+//            }.start();
 
-            TextView contentText = (TextView) view.findViewById(R.id.contentText);
-            final TextView leftTime = (TextView) view.findViewById(R.id.leftTime);
-
-            new CountDownTimer(model.getDivideTime() * secondPerMinute * 1000, 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    leftTime.setText("剩余时间:" + millisUntilFinished / 1000 + "秒");
-                    protectService.refreshNotification("剩余休息时间:" + millisUntilFinished / 1000 + "秒");
-                }
-
-                @Override
-                public void onFinish() {
-                    dialog.dismiss();
-                    protectService.updateModel(model);
-                }
-            }.start();
+            RestDialog restDialog = new RestDialog(currentActivity);
+            restDialog.show();
+            restDialog.setCountTime(model, protectService);
 
         } catch (Exception e) {
             e.printStackTrace();

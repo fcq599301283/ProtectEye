@@ -36,7 +36,7 @@ public class ProtectService extends Service {
 
     private Model model = new Model();
     private CountDownTimer countDownTimer;
-    public static final int secondPerMinute = 10;
+    public static final int secondPerMinute = 60;
 
     private SensorManager mSensorManager;
     private Sensor directionSensor, moveSensor;
@@ -151,12 +151,10 @@ public class ProtectService extends Service {
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
-        Log.d("ProtectService", "model.getTotalUseTime():" + model.getTotalUseTime());
 
         countDownTimer = new CountDownTimer(model.getTotalUseTime() * secondPerMinute * 1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.d("ProtectService", "millisUntilFinished:" + millisUntilFinished);
                 refreshNotification(millisUntilFinished / 1000 + "秒后休息");
             }
 
@@ -183,13 +181,11 @@ public class ProtectService extends Service {
                     float zValue = sensorEvent.values[2];//Acceleration minus Gz on the z-axis
                     if (zValue < 0) {
                         int level = (int) (Math.abs(200 * (zValue / mGravity)));
-                        Log.d("AccelerometerActivity", "level:" + level);
                         if (level >= 0) {
                             if (level > 100) {
                                 level = 100;
                             }
                             float radius = level * 1f / 100;
-                            Log.d("AccelerometerActivity", "radius:" + radius);
                             //// TODO: 设置模糊度
                             BlurUtils.setDirectionLevel(level);
                         }

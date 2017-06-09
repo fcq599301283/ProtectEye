@@ -270,6 +270,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="invisible"
             android:id="@+id/restTimeLay"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -301,9 +302,11 @@
     </LinearLayout>
 
     <com.github.mmin18.widget.RealtimeBlurView
+        android:elevation="16dp"
         android:id="@+id/realTimeBlurView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0" />
+        android:alpha="0"
+        tools:targetApi="lollipop" />
 
 </RelativeLayout>

@@ -12,6 +12,8 @@ public class BlurUtils {
         void onMoveChanged(int level);
 
         void onDirectionChange(int level);
+
+        void onDistanceChange(int level);
     }
 
     private static ArrayList<OnBlurChanged> onBlurChangeds = new ArrayList<>();
@@ -36,6 +38,12 @@ public class BlurUtils {
     public static void setDirectionLevel(int level) {
         for (OnBlurChanged onBlurChanged : onBlurChangeds) {
             onBlurChanged.onDirectionChange(level);
+        }
+    }
+
+    public static void setDistanceLevel(int level) {
+        for (OnBlurChanged onBlurChanged : onBlurChangeds) {
+            onBlurChanged.onDistanceChange(level);
         }
     }
 }

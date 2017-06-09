@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fcq.protecteye">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -54,6 +59,10 @@
 
         <activity
             android:name=".DiscoverActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".BtActivity"
             android:screenOrientation="portrait" />
 
     </application>

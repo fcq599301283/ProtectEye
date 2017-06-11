@@ -10,6 +10,28 @@
         android:scaleType="fitXY"
         android:src="@drawable/discover" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <ImageView
+            android:id="@+id/leftTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:src="@mipmap/back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="星球探索"
+            android:textColor="@color/w0"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
     <com.github.mmin18.widget.RealtimeBlurView
         android:id="@+id/realTimeBlurView"
         android:layout_width="match_parent"

@@ -11,12 +11,56 @@
         android:scaleType="fitXY"
         android:src="@drawable/test" />
 
-    <ImageView
-        android:id="@+id/personalCenter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:src="@mipmap/personal_center" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <ImageView
+            android:id="@+id/personalCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="16dp"
+            android:src="@mipmap/personal_center" />
+
+        <FrameLayout
+            android:id="@+id/modelSelectLay"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/retan_start_model2">
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingBottom="6dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="6dp">
+
+                <TextView
+                    android:id="@+id/modelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="极限模式"
+                    android:textColor="@color/startText" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="2dp"
+                    android:src="@mipmap/arrow_down" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/btConnectedLay"
@@ -67,43 +111,6 @@
             android:text="星球探索"
             android:textColor="@color/startText" />
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/modelSelectLay"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/retan_start_model2">
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:paddingBottom="6dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="6dp">
-
-            <TextView
-                android:id="@+id/modelText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="极限模式"
-                android:textColor="@color/startText" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="2dp"
-                android:src="@mipmap/arrow_down" />
-        </LinearLayout>
-
-    </FrameLayout>
-
 
     <com.github.mmin18.widget.RealtimeBlurView
         android:id="@+id/realTimeBlurView"

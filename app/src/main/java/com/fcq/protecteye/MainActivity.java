@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements MyHandler.OnState
             unbindService(serviceConnection);
             isBinded = false;
         }
+        MyHandler.getInstance().register(this, false);
     }
 
     private void initView() {
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements MyHandler.OnState
         startService(intent);
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 
+        MyHandler.getInstance().register(this, true);
     }
 
     private void initDefaultModel() {
@@ -176,12 +178,6 @@ public class MainActivity extends AppCompatActivity implements MyHandler.OnState
                 break;
         }
     }
-
-    private void showDialog() {
-        RestDialog dialog = new RestDialog(this);
-        dialog.show();
-    }
-
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
         @Override

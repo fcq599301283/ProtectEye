@@ -152,7 +152,7 @@ public class ProtectService extends Service {
             countDownTimer.cancel();
         }
 
-        countDownTimer = new CountDownTimer(model.getTotalUseTime() * secondPerMinute * 1000, 1000) {
+        countDownTimer = new CountDownTimer(model.getDivideTime() * secondPerMinute * 1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 refreshNotification(millisUntilFinished / 1000 + "秒后休息");

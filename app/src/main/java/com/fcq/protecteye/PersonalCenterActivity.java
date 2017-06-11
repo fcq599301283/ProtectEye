@@ -106,6 +106,7 @@ public class PersonalCenterActivity extends Activity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.leftTop:
+                finish();
                 break;
             case R.id.modify:
                 startActivity(new Intent(PersonalCenterActivity.this, ModifyInfoActivity.class));

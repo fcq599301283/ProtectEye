@@ -191,6 +191,7 @@ public class BtActivity extends Activity implements MyHandler.OnStateChange {
         switch (msg.what) {
             case LinkService.Connected:
                 ToastUtils.showShort(getActivity(), "连接成功");
+                finish();
                 break;
             case LinkService.Connecting:
                 ToastUtils.showShort(getActivity(), "正在连接...");

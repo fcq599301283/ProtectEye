@@ -270,7 +270,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:visibility="invisible"
+            android:visibility="gone"
             android:id="@+id/restTimeLay"
             android:layout_width="match_parent"
             android:layout_height="50dp"
